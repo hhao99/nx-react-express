@@ -68,7 +68,31 @@ docker-compose up -d
 
 ### Add app user and database to mongo
 
-###Todo
+Start the mongosh in the container with admin credential
+```bash
+docker -it exec <mongodb_container> mongosh -u admin 
+```
 
+Create a new user
+
+```mongosh
+use admin;
+db.createUser({
+    user: 'k1'
+    pwd: 'admin',
+    roles: [
+        { role: 'readWrite', db: 'todos'}
+    ]
+})
+```
+
+Test the user access to the db
+```bash
+docker -it exec <mongodb_container> mongosh -u app1 
+```
+
+[Mongodb and mongoose connection](https://mongoosejs.com/docs/connections.html#:~:text=You%20can%20connect%20to%20MongoDB%20with%20the%20mongoose.connect,databases%2C%20we%20recommend%20using%20127.0.0.1%20instead%20of%20localhost.)
+
+Notes: please be careful the authSource option, in the mongoose connection , you must specify the authSource option which database you create the **k1** user.
 
 
