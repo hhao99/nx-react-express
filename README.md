@@ -32,7 +32,43 @@ add SWR, axios, react-router-dom package
 ```bash
 pnpm i swr axios react-router-dom
 ```
-[SWR docs](https://swr.vercel.app/)
+Please refer [SWR docs](https://swr.vercel.app/) for the data fetch.
+
+## Backend Api project
+
+We use mongodb as the backend noSQL database.
+
+### Mongodb docker image
+You may look up mongo docker image on the [mongo dockerhub office page](https://hub.docker.com/_/mongo)
+
+We use the docker image mongo:6-jammy as the base image.
+MongoDB need several environment variables to start the container:
+ * MONGO_INITDB_ROOT_USERNAME
+ * MONGO_INITDB_ROOT_PASSWORD
+  
+Those variables specify the admin user crednetials.
+
+Start the container
+```bash 
+docker run -d  --name mongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=<secret_pass> mongo:6-jammy 
+```
+Access the container mongosh
+```bash
+docker -it  exec <you-mongo-container-name> mongosh
+```
+
+Start the container with docker-compose
+
+The Recommended way start mongodb is docker-compose.
+Update the docker-compose.yml and then start it
+
+```bash
+docker-compose up -d
+```
+
+### Add app user and database to mongo
+
+###Todo
 
 
 
