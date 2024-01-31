@@ -1,12 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 
-import NxWelcome from './nx-welcome';
+i
+export  function App() {
 
-export function App() {
   return (
-    <div>
-      <NxWelcome title="todo" />
+    <div className='flex justify-center items-center'>
+      <h1>todo</h1>
     </div>
   );
 }
