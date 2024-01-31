@@ -20,9 +20,9 @@ app.get('/api', (req, res) => {
 
 // todo api endpoints
 const list = [
-  { title: 'first task' }
+  { title: 'first task 1973' }
 ]
-app.get('/todos', (req, res) => {
+app.get('/api/todos', (req, res) => {
   res.status(201).send({ 
     code: 'ok',
     status: '201',
@@ -30,6 +30,18 @@ app.get('/todos', (req, res) => {
 
    });
 });
+
+app.post('/api/todos', (req,res) => {
+  const { title } = req.body
+  list.push({title})
+
+  console.log(list)
+  res.send({
+    code: 'ok',
+    message: 'added',
+    data: list
+  })
+})
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
