@@ -26,7 +26,7 @@ export  function App() {
       <div>
         {isLoading&& <h3>Data Loading...</h3>}
         {error&& <h3>ERROR: {error.message}</h3>}
-        {data&& data.map(todo=> <h3 key={todo.title}>{todo.title}</h3>)}
+        {data&& data.map(todo=> <h3 key={todo._id}>{todo._id} - {todo.title}</h3>)}
       </div>
     </div>
   );
