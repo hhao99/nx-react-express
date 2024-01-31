@@ -1,6 +1,6 @@
 # NX react with express project
 
-## project setup
+## Project setup
 
 Create a new react application with integrated monorepo:
 
