@@ -17,8 +17,18 @@ app.get('/', (req,res)=> { res.send({ message: 'api project'})})
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
+
+// todo api endpoints
+const list = [
+  { title: 'first task' }
+]
 app.get('/todos', (req, res) => {
-  res.send({ message: 'Welcome to todos!' });
+  res.status(201).send({ 
+    code: 'ok',
+    status: '201',
+    data: list
+
+   });
 });
 
 const port = process.env.PORT || 3333;
