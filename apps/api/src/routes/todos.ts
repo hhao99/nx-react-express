@@ -1,12 +1,11 @@
 import { Router } from 'express'
-import {ITodo, Todo } from '../models/todo'
-import mongoose from 'mongoose'
+import { ITodo, Todo } from '../models/todo'
+import { db_init } from '../utils/db'
 
-const db_url = 'mongodb://k1:admin@127.0.0.1/todos?' //authSource=todos'
-mongoose.connect(db_url)
+
 
 const router = Router()
-
+db_init()
 router.get('/', async (_req,res)=> {
     const list =  await Todo.find()
         .catch(console.log)
