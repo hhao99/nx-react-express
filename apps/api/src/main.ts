@@ -7,6 +7,7 @@ import express from 'express';
 import * as path from 'path';
 import cors from 'cors'
 
+import todoRouter from './routes/todos'
 const app = express();
 app.use(express.json())
 app.use(cors())
@@ -14,34 +15,18 @@ app.use(cors())
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/', (req,res)=> { res.send({ message: 'api project'})})
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to api!' });
-});
 
-// todo api endpoints
-const list = [
-  { title: 'first task 1973' }
-]
-app.get('/api/todos', (req, res) => {
-  res.status(201).send({ 
-    code: 'ok',
-    status: '201',
-    data: list
-
-   });
-});
-
-app.post('/api/todos', (req,res) => {
-  const { title } = req.body
-  list.push({title})
-
-  console.log(list)
-  res.send({
-    code: 'ok',
-    message: 'added',
-    data: list
+app.use( (err,_req,res,_next) => {
+  res.status(500).send({
+    code: 'error',
+    status: 500,
+    message: err.message
   })
 })
+
+// todo api endpoints
+app.use('/api/v1/todos',todoRouter)
+
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
