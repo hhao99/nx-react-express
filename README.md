@@ -18,3 +18,21 @@ pnpm i -D @nx/express
 pnpm nx g @nx/express <backend-project-name></backend-project-name> --frontendProject <frontend-Poject-name>
 
 ```
+
+## Frontend Project 
+
+Add tailwindcss support to the project
+```bash
+pnpm nx g @nx/react:setup-tailwind todo
+```
+NX will add tailwindcss related package and update the tailwind config file.
+
+Use the swr for the component data fetch support
+add SWR, axios, react-router-dom package
+```bash
+pnpm i swr axios react-router-dom
+```
+[SWR docs](https://swr.vercel.app/)
+
+
+
