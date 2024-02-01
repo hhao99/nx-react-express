@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <>
-            Home
+           <button btn='btn'>Home</button> 
         </>
     )
 }

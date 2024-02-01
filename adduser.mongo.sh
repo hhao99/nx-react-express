@@ -1,0 +1,1 @@
+ db.createUser({ user: 'k1', pwd: 'admin', roles: [ { role: 'readWriter', db: 'todos'}]});
