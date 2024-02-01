@@ -7,20 +7,31 @@ import NotFound from './notfound'
 import TodoApp from './todo'
 export default function App({ title }: { title: string }) {
   return (
-    <div className='flex flex-col justify-center items-center'>
-      <div className='m-4 flex justify-between'>
-      <h1> { title || "Todo App"}</h1>
-      <nav className='grid grid-cols-3 gap-2'>
-        <Link to="/">Home</Link>
-        <Link to="/todo">Todo App</Link>
-        <Link to="/about">About</Link>
-      </nav>
+    <div>
+      <div className='navbar bg-base-100'>
+        <div className="flex-none">
+          <button className="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      <div className="flex-1">
+        <a className="btn btn-ghost text-xl">Todo App</a>
       </div>
+
+      <div className="flex-none">
+        <ul className='menu menu-horizontal px-1'>
+          <li><Link to="/todo">Todo App</Link></li> 
+          <li><Link to="/about">About</Link></li> 
+        </ul>
+      </div>  
+    </div>
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/todo" element={<TodoApp />} />
         <Route path="*" element={<NotFound />} />
-    </Routes>
+      </Routes>
+    </div>
     </div>) 
 }
