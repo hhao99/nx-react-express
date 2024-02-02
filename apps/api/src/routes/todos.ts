@@ -51,4 +51,34 @@ router.get('/:id' ,async (req,res) => {
     })
 })
 
+router.delete('/:id', (req,res)=> {
+    const id   = req.params.id 
+    console.log("delete " + id)
+    Todo.findByIdAndDelete(id)
+        .then( (result)=> {
+            if(!result) {
+                res.status(404).send( {
+                    code: 'fail',
+                    message: 'failed to delete the id ' + id
+                })
+            } else {
+            res.send({
+                code: 'ok',
+                status: '202',
+                message: "DeleteAll done"
+            }) }
+        })
+        .catch(console.log)
+})
+router.delete('/', (req,res) => {
+    Todo.deleteMany({})
+        .then( ()=> {
+            res.send({
+                code: 'ok',
+                status: '202',
+                message: "DeleteAll done"
+            })
+        })
+        .catch(console.log)
+})
 export default router;

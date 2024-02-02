@@ -8,7 +8,7 @@ export async function db_init() {
         const pass = process.env.DB_HOST || 'admin'
         const db = process.env.DB_HOST || 'todos'
 
-        const conn_str = `mongodb://${user}:${pass}@${host}:${port}/${db}?authSource=admin`
+        const conn_str = `mongodb://${user}:${pass}@${host}:${port}/${db}?authSource=${db}`
 
         mongoose.connect(conn_str)
             .then( ()=> console.log(`connected to ${db}`))
